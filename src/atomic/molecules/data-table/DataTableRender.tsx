@@ -26,6 +26,7 @@ export type DataTableRenderProps<T extends object> = {
 export const DataTableRender = <T extends object, >({columns, items, key, onRowClick, sortBy, setSortBy, sortAsc, setSortAsc}: DataTableRenderProps<T>) => {
     const getValue = (item: T, column: DataTableColumn<T>) => {
         switch (column.type) {
+            default:
             case 'string':
                 return (item as any)[column.field];
             case 'number':
