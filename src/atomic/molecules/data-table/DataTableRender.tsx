@@ -1,4 +1,4 @@
-import {formatNumber} from "../../../utils/formatNumber.ts";
+import {formatMoney, formatNumber, formatPercentage} from "../../../utils/formatNumber.ts";
 import React from "react";
 
 export type ColumnComponent<T extends object> = React.FC<{ item: T }>;
@@ -8,7 +8,7 @@ export type DataTableColumn<T extends object> = {
     label: string;
     sortable?: boolean;
     searchable?: boolean;
-    type?: 'string' | 'number' | 'count' | 'component';
+    type?: 'string' | 'number' | 'count' | 'percentage' | 'money' | 'component';
     component?: ColumnComponent<T>;
 }
 
@@ -30,6 +30,10 @@ export const DataTableRender = <T extends object, >({columns, items, key, onRowC
                 return (item as any)[column.field];
             case 'number':
                 return formatNumber((item as any)[column.field]);
+            case 'percentage':
+                return formatPercentage((item as any)[column.field]);
+            case 'money':
+                return formatMoney((item as any)[column.field]);
             case 'count':
                 return formatNumber((item as any)[column.field].length);
             case 'component':
