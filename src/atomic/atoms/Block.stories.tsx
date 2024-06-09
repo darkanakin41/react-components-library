@@ -1,10 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import { Block } from './Block';
+import {maxHeightDecorator} from "../../dev/decorators/maxHeight.tsx";
+import {maxWidthDecorator} from "../../dev/decorators/maxWidth.tsx";
 
 const meta = {
   title: 'Atoms/Block',
   component: Block,
+  decorators: [
+    maxHeightDecorator,
+    maxWidthDecorator,
+  ],
   parameters: {
     layout: 'centered',
   },

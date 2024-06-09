@@ -1,0 +1,23 @@
+.data-table {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+  &__table-wrapper {
+    flex-grow: 1;
+    max-height: 100%;
+    overflow: auto;
+  }
+
+  &__search {
+    border-radius: 0.8rem;
+    border: 1px solid rgba(101, 99, 99, 0.875);
+    color: inherit;
+  }
+
+  &__row, &__cell {
+    &--clickable {
+      cursor: pointer;
+    }
+  }
+}
