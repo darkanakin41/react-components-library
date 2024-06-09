@@ -1,5 +1,5 @@
 import './SquareColorpicker.scss';
-import {RGB} from "@/types/RGB.ts";
+import {RGB} from "../../../types/RGB.ts";
 
 type SquareColorpickerProps = {
     colors: Map<string, RGB>;

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
-import { keydownHandler } from '@/utils/keydownHandler.ts';
 import './Keystroke.scss';
+import {keydownHandler} from "../../utils/keydownHandler.ts";
 
 type KeystrokeProps = {
     onPress?: () => void;

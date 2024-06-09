@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import './NavigatorTab.scss';
-import {Button} from "@/atomic/atoms/Button.tsx";
+import {Button} from "../../atoms/Button.tsx";
 
 type Tab = {
     label: string | JSX.Element;

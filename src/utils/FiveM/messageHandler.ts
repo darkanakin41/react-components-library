@@ -1,5 +1,5 @@
 import axios from 'axios';
-import getResourceName from "@/utils/FiveM/getResourceName.ts";
+import getResourceName from "./getResourceName.ts";
 
 class MessageHandler {
     private handlers: { [key: string]: (data: unknown) => void };

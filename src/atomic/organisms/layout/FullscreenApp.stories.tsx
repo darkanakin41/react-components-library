@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { FullscreenApp } from './FullscreenApp';
-import logo from "@/assets/mycity-rp/logo-transparent-white.png";
+import logo from "../../../assets/mycity-rp/logo-transparent-white.png";
 import {Block} from "../../atoms/Block.tsx";
 import {fivemParameters} from "../../../../.storybook/preview.ts";
 

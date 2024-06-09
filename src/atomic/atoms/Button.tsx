@@ -1,6 +1,6 @@
 import React, { PropsWithChildren, useMemo } from 'react';
 import './Button.scss';
-import {Keystroke} from "@/atomic/atoms/Keystroke.tsx";
+import {Keystroke} from "./Keystroke.tsx";
 
 type ButtonProps = {
     square?: boolean;

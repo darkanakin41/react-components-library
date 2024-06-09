@@ -1,7 +1,7 @@
 import { BiMinus, BiPlus } from 'react-icons/bi';
 import './IntegerField.scss';
 import { useState } from 'react';
-import {Button} from "@/atomic/atoms/Button.tsx";
+import {Button} from "../../atoms/Button.tsx";
 
 type IntegerFieldProps = {
     value: number;

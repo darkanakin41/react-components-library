@@ -1,4 +1,4 @@
-import {isDev} from "@/utils/isDev.ts";
+import {isDev} from "../isDev.ts";
 
 declare global {
     interface Window {

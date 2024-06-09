@@ -1,6 +1,6 @@
 import { useMemo, useRef, useState } from 'react';
 import './SelectField.scss';
-import {useClickOutside} from "@/utils/clickOutside.ts";
+import {useClickOutside} from "../../../utils/clickOutside.ts";
 
 type SelectFieldType<T> = {
     placeholder: string;

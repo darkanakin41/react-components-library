@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import {messageHandler} from "@/utils/FiveM/messageHandler.ts";
+import {messageHandler} from "./messageHandler.ts";
 
 export const useControlUpdate = () => {
     const isInInputField = () => {

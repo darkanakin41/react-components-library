@@ -1,7 +1,7 @@
 import './Modal.scss';
 import { FaWindowClose } from 'react-icons/fa';
 import { PropsWithChildren, useMemo, useState } from 'react';
-import {Button} from "@/atomic/atoms/Button.tsx";
+import {Button} from "../atoms/Button.tsx";
 
 export type ModalProps = {
     title: string;

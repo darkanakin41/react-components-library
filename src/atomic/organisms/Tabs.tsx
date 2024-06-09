@@ -1,5 +1,5 @@
-import {NavigatorTab, Tab, TabNavigatorProps} from "@/atomic/molecules/navigator/NavigatorTab.tsx";
 import {useState} from "react";
+import {NavigatorTab, Tab, TabNavigatorProps} from "../molecules/navigator/NavigatorTab.tsx";
 
 export type EnhancedTab = {
     component?: JSX.Element;
