@@ -1,6 +1,5 @@
 {
-  "name": "storybook",
-  "private": true,
+  "name": "react-component-library",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
