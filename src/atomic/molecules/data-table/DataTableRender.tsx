@@ -85,6 +85,15 @@ export const DataTableRender = <T extends object, >({columns, items, key, onRowC
         }
     }
 
+    const Sorted = ({column}: {column: DataTableColumn<T>}) => {
+        if (column.sortable) {
+            if (column.field === sortBy) {
+                return sortAsc ? '↑' : '↓';
+            }
+        }
+        return " ";
+    }
+
     return (
         <div className="data-table__table-wrapper">
             <table>
@@ -92,7 +101,7 @@ export const DataTableRender = <T extends object, >({columns, items, key, onRowC
                 <tr>
                     {columns.map((column) => (
                         <th className={getCellClass(column, true)} onClick={() => handleHeaderCellClick(column)}>
-                            {column.label}
+                            {<Sorted column={column} />} {column.label}
                         </th>
                     ))}
                 </tr>

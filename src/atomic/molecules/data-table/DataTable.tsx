@@ -12,7 +12,7 @@ export type DataTableProps<T extends object> = {
 } & Omit<DataTableRenderProps<T>, 'sortBy' | 'setSortBy' | 'sortAsc' | 'setSortAsc'>
     & Omit<DataTablePaginationProps, 'currentPage' | 'onPageChange' | 'totalItems'>
 
-export const DataTable = <T extends object, >({defaultSortBy, defaultSortAsc = true, columns, items, key, paginated = false, searchEnabled = false, itemsPerPage = 10, }: DataTableProps<T>) => {
+export const DataTable = <T extends object, >({defaultSortBy, defaultSortAsc = true, columns, items, key, paginated = false, searchEnabled = false, itemsPerPage = 10, onRowClick }: DataTableProps<T>) => {
 
     const [currentPage, setCurrentPage] = useState<number>(0);
 
@@ -73,7 +73,7 @@ export const DataTable = <T extends object, >({defaultSortBy, defaultSortAsc = t
     return (
         <div className="data-table">
             {searchEnabled && <input placeholder={"Rechercher"} value={search} onChange={(e) => setSearch(e.target.value)} className="data-table__search"/>}
-            <DataTableRender key={key} items={displayedItems} columns={columns} sortAsc={sortAsc} setSortAsc={setSortAsc} sortBy={sortBy} setSortBy={setSortBy}/>
+            <DataTableRender key={key} items={displayedItems} columns={columns} sortAsc={sortAsc} setSortAsc={setSortAsc} sortBy={sortBy} setSortBy={setSortBy} onRowClick={onRowClick} />
             {paginated && <DataTablePagination currentPage={currentPage} itemsPerPage={itemsPerPage} onPageChange={setCurrentPage} totalItems={filteredItems.length}/>}
         </div>
     );
