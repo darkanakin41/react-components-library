@@ -1,0 +1,27 @@
+.loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 100;
+
+  justify-content: center;
+  align-items: center;
+
+  font-size: 5rem;
+
+  &.loader--open {
+    display: flex;
+  }
+
+  .spin {
+    animation-name: spin;
+    animation-duration: 4000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    color: var(--primary-color);
+  }
+}

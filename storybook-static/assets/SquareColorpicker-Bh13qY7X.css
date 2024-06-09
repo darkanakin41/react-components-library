@@ -1,0 +1,1 @@
+.color-picker{display:flex;flex-direction:row;flex-wrap:wrap;gap:.25rem;justify-content:center}.color-picker-color{border:1px solid rgba(101,99,99,.875);height:1rem;width:1rem;cursor:pointer}.color-picker-color:hover{border:1px solid white}

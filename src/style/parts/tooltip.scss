@@ -1,0 +1,63 @@
+[data-tooltip] {
+  position: relative;
+
+  &::after {
+    background-color: rgb(73, 76, 88);
+    border-radius: 0.2rem;
+    color: white;
+    content: attr(data-tooltip);
+    font-size: 0.8rem;
+    min-height: 1rem;
+    opacity: 0;
+    padding: 0.3rem 0.5rem;
+    pointer-events: none;
+    position: absolute;
+    transform: translateX(-50%) translateY(0.5rem);
+    transition: all ease 0.2s;
+    transition-delay: 0.3s;
+    visibility: hidden;
+    white-space: nowrap;
+    z-index: 9;
+  }
+
+  &:hover {
+    &::after {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+      visibility: visible;
+    }
+  }
+}
+
+[data-tooltip-position="top"] {
+  &::after {
+    bottom: calc(100% + 0.2rem);
+    left: 50%;
+  }
+}
+
+[data-tooltip-position="bottom"] {
+  &::after {
+    top: calc(100% + 0.2rem);
+    left: 50%;
+  }
+}
+[data-tooltip-position="right"] {
+  &::after {
+    left: 180%;
+  }
+}
+[data-tooltip-position="left"] {
+  &::after {
+    left: -100%;
+  }
+}
+
+@keyframes popProgress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}

@@ -1,0 +1,30 @@
+:root {
+  --my-city-red: #C80000;
+  --my-city-red-transparent: rgba(200, 0, 0, 0.75);
+
+  --pink: #ff00ae;
+  --gradient-color: rgba(0,0,0,0.85);
+
+  --background-color: rgba(18, 21, 26, 0.7);
+  --background-color-opaque: rgba(18, 21, 26, 1);
+  --background-lighter-color: rgba(24, 28, 35, 0.7);
+  --background-gradient-ltr: linear-gradient(to right, #21262f, #161a20);
+
+  --border: 0.1rem solid rgba(255, 255, 255, 0.05);
+  --border-radius: 0.5rem;
+
+  --button-square-size: 50px;
+  --button-radius-size: 5px;
+
+  --sided-app-column-width: 25rem;
+  --sided-app-side-padding: 1rem;
+
+  --info-color: #1A56DB;
+  --info-darker-color: #1E429F;
+  --success-color: #046C4E;
+  --success-darker-color: #03543F;
+  --warning-color: #E3A008;
+  --warning-darker-color: #C27803;
+  --error-color: #E02424;
+  --error-darker-color: #C81E1E;
+}

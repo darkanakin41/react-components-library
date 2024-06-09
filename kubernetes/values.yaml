@@ -1,0 +1,9 @@
+image:
+    repository: harbor.local.darkanakin41.com/react-components-library/storybook
+    tag: latest
+    pullPolicy: Always
+
+ingress:
+    className: traefik
+    hosts:
+        - react-components-library.local.darkanakin41.com

@@ -1,0 +1,39 @@
+table {
+
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  thead {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+
+    tr {
+      background: linear-gradient(to right, var(--primary-color), var(--primary-color-transparent));
+      color: white;
+    }
+  }
+
+  td,
+  th {
+    padding: .45rem 1rem;
+    text-align: left;
+    user-select: text;
+
+    &.cell--center {
+        text-align: center;
+    }
+    &.cell--right {
+        text-align: right;
+    }
+  }
+  tr {
+    &:hover{
+      background-color: rgba(255,255,255,.05)
+    }
+
+    &.row--clickable {
+      cursor: pointer;
+    }
+  }
+}
