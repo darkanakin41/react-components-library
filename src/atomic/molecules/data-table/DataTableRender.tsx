@@ -97,6 +97,13 @@ export const DataTableRender = <T extends object, >({columns, items, key, onRowC
                 </tr>
                 </thead>
                 <tbody>
+                {items.length === 0 && (
+                    <tr>
+                        <td colSpan={columns.length} className="cell--center">
+                            Aucun résultat
+                        </td>
+                    </tr>
+                )}
                 {items.map((item) => (
                     <tr key={item[key] as string} onClick={() => handleRowClick(item)} className={getRowClass()}>
                         {columns.map((column) => (
