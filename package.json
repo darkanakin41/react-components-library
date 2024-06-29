@@ -1,12 +1,13 @@
 {
   "name": "@darkanakin41/react-component-library",
   "private": false,
-  "version": "0.0.10",
+  "version": "0.0.12",
   "type": "module",
   "scripts": {
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "dev": "storybook dev -p 6006",
-    "build": "storybook build"
+    "build": "storybook build",
+    "publish": "npm publish --access public"
   },
   "dependencies": {
     "axios": "^1.7.2",

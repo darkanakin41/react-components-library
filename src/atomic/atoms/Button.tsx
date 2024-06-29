@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, useMemo } from 'react';
+import React, {ForwardedRef, forwardRef, PropsWithChildren, useMemo} from 'react';
 import './Button.scss';
 import {Keystroke} from "./Keystroke.tsx";
 
@@ -21,22 +21,22 @@ type ButtonProps = {
 /**
  * Simple Button Component
  */
-const Button = ({
-    square,
-    block,
-    isActive,
-    onClick,
-    onMouseEnter,
-    onMouseLeave,
-    className,
-    disabled,
-    keystone,
-    tooltip,
-    tooltipPosition = 'top',
-    children,
-    type,
-    pill
-}: ButtonProps) => {
+const Button = forwardRef(function Button({
+                                              square,
+                                              block,
+                                              isActive,
+                                              onClick,
+                                              onMouseEnter,
+                                              onMouseLeave,
+                                              className,
+                                              disabled,
+                                              keystone,
+                                              tooltip,
+                                              tooltipPosition = 'top',
+                                              children,
+                                              type,
+                                              pill,
+                                          }: ButtonProps, ref: ForwardedRef<HTMLButtonElement> ) {
     const classes = useMemo<string>(() => {
         const classes = ['button'];
         if (type) {
@@ -97,6 +97,7 @@ const Button = ({
 
     return (
         <button
+            ref={ref}
             disabled={disabled}
             className={classes}
             onClick={handleClick}
@@ -107,6 +108,6 @@ const Button = ({
             {children}
         </button>
     );
-};
+});
 
 export { Button };
