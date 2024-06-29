@@ -1,27 +1,25 @@
 import {formatMoney, formatNumber, formatPercentage} from "../../../utils/formatNumber.ts";
 import React from "react";
+import {DataIteratorColumn} from "./type/DataIteratorColumn.ts";
+import {DataIteratorRenderProps} from "./type/DataIteratorRenderProps.ts";
 
 export type ColumnComponent<T extends object> = React.FC<{ item: T }>;
 
 export type DataTableColumn<T extends object> = {
-    field: keyof T;
     label: string;
     sortable?: boolean;
-    searchable?: boolean;
     type?: 'string' | 'number' | 'count' | 'percentage' | 'money' | 'component';
     component?: ColumnComponent<T>;
-}
+} & DataIteratorColumn<T>;
 
-export type DataTableRenderProps<T extends object> = {
-    key: keyof T;
+export type DataTableRenderProps<T extends object> = DataIteratorRenderProps<T> & {
     columns: Array<DataTableColumn<T>>;
-    items: Array<T>;
-    onRowClick?: (item: T) => void;
     sortBy: keyof T | null;
     setSortBy: (sortBy: keyof T | null) => void;
     sortAsc: boolean;
     setSortAsc: React.Dispatch<React.SetStateAction<boolean>>;
-}
+    onRowClick?: (item: T) => void;
+};
 
 export const DataTableRender = <T extends object, >({columns, items, key, onRowClick, sortBy, setSortBy, sortAsc, setSortAsc}: DataTableRenderProps<T>) => {
     const getValue = (item: T, column: DataTableColumn<T>) => {

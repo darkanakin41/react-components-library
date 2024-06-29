@@ -1,7 +1,8 @@
 import './DataTable.scss';
-import {DataTableRender, DataTableRenderProps} from "./DataTableRender.tsx";
 import {useEffect, useMemo, useState} from "react";
 import {DataIteratorPagination, DataIteratorPaginationProps} from "./DataIteratorPagination.tsx";
+import {DataGridRender, DataGridRenderProps} from "./DataGridRender.tsx";
+import './DataGrid.scss'
 
 
 export type DataTableProps<T extends object> = {
@@ -9,17 +10,17 @@ export type DataTableProps<T extends object> = {
     searchEnabled?: boolean,
     defaultSortBy?: keyof T,
     defaultSortAsc?: boolean,
-} & Omit<DataTableRenderProps<T>, 'sortBy' | 'setSortBy' | 'sortAsc' | 'setSortAsc'>
+} & DataGridRenderProps<T>
     & Omit<DataIteratorPaginationProps, 'currentPage' | 'onPageChange' | 'totalItems'>
 
-export const DataTable = <T extends object, >({defaultSortBy, defaultSortAsc = true, columns, items, key, paginated = false, searchEnabled = false, itemsPerPage = 10, onRowClick }: DataTableProps<T>) => {
+export const DataGrid = <T extends object, >({defaultSortBy, defaultSortAsc = true, columns, items, key, paginated = false, searchEnabled = false, itemsPerPage = 10, RenderComponent }: DataTableProps<T>) => {
 
     const [currentPage, setCurrentPage] = useState<number>(0);
 
     const [search, setSearch] = useState<string>('');
 
-    const [sortBy, setSortBy] = useState<keyof T | null>(defaultSortBy ?? null);
-    const [sortAsc, setSortAsc] = useState<boolean>(defaultSortAsc);
+    const [sortBy] = useState<keyof T | null>(defaultSortBy ?? null);
+    const [sortAsc] = useState<boolean>(defaultSortAsc);
 
     useEffect(() => {
         setCurrentPage(0);
@@ -73,7 +74,7 @@ export const DataTable = <T extends object, >({defaultSortBy, defaultSortAsc = t
     return (
         <div className="data-table">
             {searchEnabled && <input placeholder={"Rechercher"} value={search} onChange={(e) => setSearch(e.target.value)} className="data-table__search"/>}
-            <DataTableRender key={key} items={displayedItems} columns={columns} sortAsc={sortAsc} setSortAsc={setSortAsc} sortBy={sortBy} setSortBy={setSortBy} onRowClick={onRowClick} />
+            <DataGridRender key={key} items={displayedItems} columns={columns} RenderComponent={RenderComponent}/>
             {paginated && <DataIteratorPagination currentPage={currentPage} itemsPerPage={itemsPerPage} onPageChange={setCurrentPage} totalItems={filteredItems.length}/>}
         </div>
     );

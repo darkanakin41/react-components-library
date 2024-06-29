@@ -1,17 +1,17 @@
 import {Button} from "../../atoms/Button.tsx";
 import {useMemo} from "react";
 
-export type DataTablePaginationProps = {
+export type DataIteratorPaginationProps = {
     totalItems: number;
     itemsPerPage: number;
     currentPage: number;
     onPageChange: (page: number) => void;
 }
 
-export const DataTablePagination = ({totalItems,
+export const DataIteratorPagination = ({totalItems,
                                         itemsPerPage,
                                         currentPage,
-                                        onPageChange}: DataTablePaginationProps) => {
+                                        onPageChange}: DataIteratorPaginationProps) => {
     const maxPage = useMemo(() => Math.ceil(totalItems / itemsPerPage), [totalItems, itemsPerPage]);
     return (
         <div className="data-table__pagination">
