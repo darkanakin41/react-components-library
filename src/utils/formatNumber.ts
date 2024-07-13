@@ -1,5 +1,5 @@
-export const formatNumber = (amount: number | string | null): string => {
-    if (amount === null) {
+export const formatNumber = (amount: number | string | null | undefined): string => {
+    if (amount === null || amount === undefined) {
         return 'Non communiqué';
     }
     if (typeof amount === 'string') {
@@ -8,8 +8,8 @@ export const formatNumber = (amount: number | string | null): string => {
     return amount.toLocaleString('en-EN').replace(/,/g, ' ');
 };
 
-export const formatPercentage = (amount: number | string | null): string => {
-    if (amount === null) {
+export const formatPercentage = (amount: number | string | null | undefined): string => {
+    if (amount === null || amount === undefined) {
         return 'Non communiqué';
     }
     if (typeof amount === 'string') {
@@ -18,8 +18,8 @@ export const formatPercentage = (amount: number | string | null): string => {
     return amount.toFixed(2) + ' %';
 };
 
-export const formatMoney = (amount: number | string | null): string => {
-    if (amount === null) {
+export const formatMoney = (amount: number | string | null | undefined): string => {
+    if (amount === null || amount === undefined) {
         return 'Non communiqué';
     }
     if (typeof amount === 'string') {
