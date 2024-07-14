@@ -46,6 +46,8 @@ export const DataTableRender = <T extends object, >({columns, items, key, onRowC
         switch (column.type) {
             case 'number':
             case 'count':
+            case 'percentage':
+            case 'money':
                 classes.push('cell--right');
                 break;
             default:
