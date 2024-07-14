@@ -40,13 +40,32 @@ export const DataTable = <T extends object, >({defaultSortBy, defaultSortAsc = t
         })
     }, [searchEnabled, items, search]);
 
+    const getColumnConfiguration = (field: keyof T) => {
+        return columns.find((column) => column.field === field);
+    }
+
     const sortedItems = useMemo(() => {
         const result = [...filteredItems].sort((a, b) => {
             if (sortBy === null) {
                 return 0;
             }
-            const valueA = (a as any)[sortBy];
-            const valueB = (b as any)[sortBy];
+            let valueA = (a as any)[sortBy];
+            let valueB = (b as any)[sortBy];
+            const column = getColumnConfiguration(sortBy);
+            if(column){
+                switch(column.type) {
+                    case 'number':
+                    case 'percentage':
+                    case 'money':
+                        valueA = parseFloat(valueA ?? '0');
+                        valueB = parseFloat(valueB ?? '0');
+                        break;
+                    case 'count':
+                        valueA = (valueA ?? []).length;
+                        valueB = (valueB ?? []).length;
+                        break;
+                }
+            }
             if (typeof valueA === 'string') {
                 return valueA.localeCompare(valueB);
             }
@@ -61,7 +80,7 @@ export const DataTable = <T extends object, >({defaultSortBy, defaultSortAsc = t
         }
 
         return result;
-    }, [sortBy, sortAsc, filteredItems])
+    }, [sortBy, sortAsc, filteredItems, columns])
 
     const displayedItems = useMemo(() => {
         if (!paginated) {
