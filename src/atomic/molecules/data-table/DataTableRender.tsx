@@ -5,15 +5,8 @@ import {DataIteratorRenderProps} from "./type/DataIteratorRenderProps.ts";
 
 export type ColumnComponent<T extends object> = React.FC<{ item: T }>;
 
-export type DataTableColumn<T extends object> = {
-    label: string;
-    sortable?: boolean;
-    type?: 'string' | 'number' | 'count' | 'percentage' | 'money' | 'component';
-    component?: ColumnComponent<T>;
-} & DataIteratorColumn<T>;
-
 export type DataTableRenderProps<T extends object> = DataIteratorRenderProps<T> & {
-    columns: Array<DataTableColumn<T>>;
+    columns: Array<DataIteratorColumn<T>>;
     sortBy: keyof T | null;
     setSortBy: (sortBy: keyof T | null) => void;
     sortAsc: boolean;
@@ -22,7 +15,7 @@ export type DataTableRenderProps<T extends object> = DataIteratorRenderProps<T> 
 };
 
 export const DataTableRender = <T extends object, >({columns, items, key, onRowClick, sortBy, setSortBy, sortAsc, setSortAsc}: DataTableRenderProps<T>) => {
-    const getValue = (item: T, column: DataTableColumn<T>) => {
+    const getValue = (item: T, column: DataIteratorColumn<T>) => {
         switch (column.type) {
             default:
             case 'string':
@@ -41,7 +34,7 @@ export const DataTableRender = <T extends object, >({columns, items, key, onRowC
         }
     }
 
-    const getCellClass = (column: DataTableColumn<T>, isHeader = false) => {
+    const getCellClass = (column: DataIteratorColumn<T>, isHeader = false) => {
         const classes = [];
         switch (column.type) {
             case 'number':
@@ -74,7 +67,7 @@ export const DataTableRender = <T extends object, >({columns, items, key, onRowC
         return '';
     }
 
-    const handleHeaderCellClick = (column: DataTableColumn<T>) => {
+    const handleHeaderCellClick = (column: DataIteratorColumn<T>) => {
         if (column.sortable) {
             if (column.field === sortBy) {
                 setSortAsc((prev:boolean) => !prev);
@@ -85,7 +78,7 @@ export const DataTableRender = <T extends object, >({columns, items, key, onRowC
         }
     }
 
-    const Sorted = ({column}: {column: DataTableColumn<T>}) => {
+    const Sorted = ({column}: {column: DataIteratorColumn<T>}) => {
         if (column.sortable) {
             if (column.field === sortBy) {
                 return sortAsc ? '↑' : '↓';

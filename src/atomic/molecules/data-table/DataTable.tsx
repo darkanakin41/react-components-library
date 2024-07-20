@@ -70,7 +70,7 @@ export const DataTable = <T extends object, >({defaultSortBy, defaultSortAsc = t
                 return valueA.localeCompare(valueB);
             }
             if (typeof valueA === 'number') {
-                return valueA ?? 0 - valueB ?? 0;
+                return (valueA ?? 0) - (valueB ?? 0);
             }
             return 0;
         });
